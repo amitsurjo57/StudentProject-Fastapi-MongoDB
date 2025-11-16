@@ -1,2 +1,2 @@
-DATABASE_URL = 'mongodb+srv://amitbaniksurjo:12345@studentcluster.vcx4syw.mongodb.net/?appName=studentCluster'
-DATABASE_NAME = 'studentsDB'
+DATABASE_URL = 'mongodb://mongo:laBZeTjERFQZLpyJhaluAprPsBkkTGHt@tramway.proxy.rlwy.net:16261'
+DATABASE_NAME = 'studentDB'
