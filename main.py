@@ -6,7 +6,7 @@ from student_model import StudentModel
 
 
 def main(dept_name: str):
-    client = AsyncMongoClient(DATABASE_URL, server_api=ServerApi('1'))
+    client = AsyncMongoClient(DATABASE_URL)
     db = client.get_database(DATABASE_NAME)
     students_coll_dept = db.get_collection(dept_name)
 
