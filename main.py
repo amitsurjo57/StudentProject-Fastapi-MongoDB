@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException, status
-from pymongo import AsyncMongoClient
+from pymongo.asynchronous.mongo_client import AsyncMongoClient
+from pymongo.server_api import ServerApi
 from myutils import DATABASE_URL, DATABASE_NAME
 from student_model import StudentModel
 
 
 def main(dept_name: str):
-    client = AsyncMongoClient(DATABASE_URL)
+    client = AsyncMongoClient(DATABASE_URL, server_api=ServerApi('1'))
     db = client.get_database(DATABASE_NAME)
     students_coll_dept = db.get_collection(dept_name)
 
