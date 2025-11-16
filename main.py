@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException, status
 from pymongo.asynchronous.mongo_client import AsyncMongoClient
-from pymongo.server_api import ServerApi
 from myutils import DATABASE_URL, DATABASE_NAME
 from student_model import StudentModel
 
