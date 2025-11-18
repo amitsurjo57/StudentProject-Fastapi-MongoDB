@@ -109,35 +109,51 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                   onPressed: () async {
                     if (!_globalKey.currentState!.validate()) return;
 
-                    _inProgress = true;
-                    setState(() {});
+                    try {
+                      _inProgress = true;
+                      setState(() {});
 
-                    Uri uri = Uri.parse(
-                      AppService.searchStudent(
-                        department: _myValue.toUpperCase(),
-                        roll: int.parse(_rollController.text),
-                      ),
-                    );
+                      Uri uri = Uri.parse(
+                        AppService.searchStudent(
+                          department: _myValue.toUpperCase(),
+                          roll: int.parse(_rollController.text),
+                        ),
+                      );
 
-                    Response response = await get(uri);
+                      Response response = await get(uri);
 
-                    final decodedResponse = jsonDecode(response.body);
+                      final decodedResponse = jsonDecode(response.body);
 
-                    studentModel = StudentModel(
-                      name: decodedResponse['name'],
-                      department: decodedResponse['department'],
-                      roll: decodedResponse['roll'],
-                      section: decodedResponse['section'],
-                      phone: decodedResponse['phone'],
-                    );
+                      studentModel = StudentModel(
+                        name: decodedResponse['name'],
+                        department: decodedResponse['department'],
+                        roll: decodedResponse['roll'],
+                        section: decodedResponse['section'],
+                        phone: decodedResponse['phone'],
+                      );
 
-                    _inProgress = false;
-                    setState(() {});
+                      if (response.statusCode != 200) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Student not found")),
+                          );
+                        }
+                      }
 
-                    await _pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeOut,
-                    );
+                      _inProgress = false;
+                      setState(() {});
+
+                      await _pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeOut,
+                      );
+                    } catch (_) {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Something went wrong")),
+                        );
+                      }
+                    }
                   },
                   style: ElevatedButton.styleFrom(fixedSize: Size(180, 48)),
                   child: Text("Search Student"),
