@@ -132,10 +132,10 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                         phone: decodedResponse['phone'],
                       );
 
-                      if (response.statusCode != 200) {
+                      if (response.statusCode == 200) {
                         if (mounted) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("Student not found")),
+                            SnackBar(content: Text("Student found")),
                           );
                         }
                       }
@@ -150,9 +150,11 @@ class _StudentSearchScreenState extends State<StudentSearchScreen> {
                     } catch (_) {
                       if (mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Something went wrong")),
+                          SnackBar(content: Text("Student not found")),
                         );
                       }
+                      _inProgress = false;
+                      setState(() {});
                     }
                   },
                   style: ElevatedButton.styleFrom(fixedSize: Size(180, 48)),
