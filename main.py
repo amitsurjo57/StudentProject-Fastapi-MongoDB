@@ -85,6 +85,9 @@ async def find_student(dept_name: str, roll: int):
 
         await client.close()
 
+        if not student:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
+
         return {
             '_id': str(student['_id']),
             'name': student['name'],

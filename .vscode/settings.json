@@ -1,0 +1,5 @@
+{
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.diagnosticsSource": "Pylance",
+    "python.analysis.inlayHints.functionReturnTypes": false
+}
