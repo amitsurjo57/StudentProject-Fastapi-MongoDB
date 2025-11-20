@@ -46,6 +46,7 @@ class StudentWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: .center,
               mainAxisAlignment: .center,
+              spacing: 4,
               children: [
                 ElevatedButton.icon(
                   onPressed: onUpdate,
