@@ -61,7 +61,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Students List'),
+        title: SelectableText('Students List'),
         actions: [
           IconButton(
             onPressed: () {
@@ -165,7 +165,7 @@ class _StudentListScreenState extends State<StudentListScreen> {
       mainAxisAlignment: .start,
       spacing: 12,
       children: [
-        Text(
+        SelectableText(
           "Select Department:",
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
         ),

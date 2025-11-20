@@ -34,11 +34,11 @@ class StudentWidget extends StatelessWidget {
                   crossAxisAlignment: .start,
                   mainAxisAlignment: .center,
                   children: [
-                    Text("Name: ${studentModel.name}"),
-                    Text("Department: ${studentModel.department}"),
-                    Text("Roll: ${studentModel.roll}"),
-                    Text("Section: ${studentModel.section}"),
-                    Text("Phone: ${studentModel.phone}"),
+                    SelectableText("Name: ${studentModel.name}"),
+                    SelectableText("Department: ${studentModel.department}"),
+                    SelectableText("Roll: ${studentModel.roll}"),
+                    SelectableText("Section: ${studentModel.section}"),
+                    SelectableText("Phone: ${studentModel.phone}"),
                   ],
                 ),
               ),
@@ -55,9 +55,7 @@ class StudentWidget extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: onDelete,
                   label: Text("Delete"),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                  ),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   icon: Icon(Icons.delete, color: Colors.white),
                 ),
               ],
